@@ -51,7 +51,6 @@ public class Module4Lab {
 
 
     // everyone moves one floor up (ex: 200 -> 300)
-    // challenge: how many ways can you write this without a loop or stream [forEach() is ok]
     public void musicalRooms(Map<String, Workshop> map) {
         //TODO implement with streams (no removeIf() or if statements or loops)
     }

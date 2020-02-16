@@ -54,7 +54,6 @@ public class Module4LabSolution {
 
 
     // everyone moves one floor up (ex: 200 -> 300)
-    // challenge: how many ways can you write this without a loop or stream [forEach() is ok]
     public void musicalRooms(Map<String, Workshop> map) {
         map.values().stream()
                 .sorted(Comparator.comparing(Workshop::getRoomNumber))
