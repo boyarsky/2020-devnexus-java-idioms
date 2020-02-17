@@ -28,7 +28,7 @@ class WriteFileJava11Test {
 
     @AfterEach
     void tearDown() throws IOException {
-        Files.delete(outputPath);
+        Files.deleteIfExists(outputPath);
     }
 
     @Test

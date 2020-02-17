@@ -1,9 +1,6 @@
 package com.jeanneboyarsky.lab;
 
-import com.jeanneboyarsky.solutions.Module5LabSolution;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Module5Lab {
 
@@ -32,34 +29,34 @@ public class Module5Lab {
         }
     }
 
-    public String getAllPresentersSorted(Map<String, Module5LabSolution.Workshop> map) {
+    public String getAllPresentersSorted(Map<String, Workshop> map) {
         //TODO Implement using flatMap
         return null;
     }
 
     // everyone moves one floor up (ex: 200 -> 300)
-    public Map<Integer, String> musicalRooms(Map<String, Module5LabSolution.Workshop> map) {
+    public Map<Integer, String> musicalRooms(Map<String, Workshop> map) {
         //TODO Implement using toMap
         return null;
     }
 
-    public int largestRoomNumber(Map<String, Module5LabSolution.Workshop> map) {
+    public int largestRoomNumber(Map<String, Workshop> map) {
         //TODO Implement using reduce
         return 0;
     }
 
-    public Map<Integer, Integer> largestRoomNumbersByFloor(Map<String, Module5LabSolution.Workshop> map) {
+    public Map<Integer, Integer> largestRoomNumbersByFloor(Map<String, Workshop> map) {
         //TODO Implement using toMap
         return null;
     }
 
-    public Map<String, Optional<String>> largestRoomNumbersByFloorAsString(Map<String, Module5LabSolution.Workshop> map) {
+    public Map<String, Optional<String>> largestRoomNumbersByFloorAsString(Map<String, Workshop> map) {
         //TODO Implement using groupingBy
         return null;
     }
 
     // challenge question: this is tricky!
-    public Map<Integer, Integer> largestRoomNumbersByFloorCollectorVersion(Map<String, Module5LabSolution.Workshop> map) {
+    public Map<Integer, Integer> largestRoomNumbersByFloorCollectorVersion(Map<String, Workshop> map) {
         //TODO Implement using toMap
         return null;
     }

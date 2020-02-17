@@ -1,10 +1,7 @@
 package com.jeanneboyarsky.lab;
 
-import com.jeanneboyarsky.solutions.Module4LabSolution;
-
 import java.io.PrintStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Module4Lab {
 

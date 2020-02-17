@@ -1,6 +1,5 @@
 package com.jeanneboyarsky.lab;
 
-import com.jeanneboyarsky.solutions.Module5LabSolution;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Module5LabTest {
 
     private Module5Lab target;
-    private Map<String, Module5LabSolution.Workshop> workshops;
+    private Map<String, Workshop> workshops;
 
     @BeforeEach
     void setUp() {
@@ -24,40 +23,40 @@ public class Module5LabTest {
     void devNexusWorkshops() {
         workshops = Map.ofEntries(
                 Map.entry("Kotlin",
-                        new Module5LabSolution.Workshop("Kotlin Full Day Workshop", 302,
+                        new Workshop("Kotlin Full Day Workshop", 302,
                                 "Kenneth Kousen")),
                 Map.entry("TDD",
-                        new Module5LabSolution.Workshop("Test Driven Development: From Principles to Practice", 303
+                        new Workshop("Test Driven Development: From Principles to Practice", 303
                                 , "Venkat Subramaniam")),
                 Map.entry("Idioms",
-                        new Module5LabSolution.Workshop("Java Idioms for becoming a more powerful developer", 304,
+                        new Workshop("Java Idioms for becoming a more powerful developer", 304,
                                 "Jeanne Boyarsky")),
                 Map.entry("Security",
-                        new Module5LabSolution.Workshop("Java Security Workshop", 305,
+                        new Workshop("Java Security Workshop", 305,
                                 "Steve Poole", "Brian Vermeer")),
                 Map.entry("Advanced-Kubernetes",
-                        new Module5LabSolution.Workshop("Advanced Kubernetes workshop", 311,
+                        new Workshop("Advanced Kubernetes workshop", 311,
                                 "Adarsh Shah")),
                 Map.entry("Kubernetes-101",
-                        new Module5LabSolution.Workshop("Kubernetes 101 Workshop", 312,
+                        new Workshop("Kubernetes 101 Workshop", 312,
                                 "JJ Asghar")),
                 Map.entry("CloudNativeMicroprofile",
-                        new Module5LabSolution.Workshop("Cloud Native Microservice with MicroProfile, Docker, Kubernetes, Istio and Open Shift",
+                        new Workshop("Cloud Native Microservice with MicroProfile, Docker, Kubernetes, Istio and Open Shift",
                                 313, "Emily Jiang")),
                 Map.entry("Quarkus",
-                        new Module5LabSolution.Workshop("The Quarkus Tutorial", 314,
+                        new Workshop("The Quarkus Tutorial", 314,
                                 "Edson Yanaga")),
                 Map.entry("SpringBoot",
-                        new Module5LabSolution.Workshop("Extending Spring Boot for Enterprise", 315,
+                        new Workshop("Extending Spring Boot for Enterprise", 315,
                                 "Billy Korando")),
                 Map.entry("Microservices",
-                        new Module5LabSolution.Workshop("Responsible Microservices Architecture", 403,
+                        new Workshop("Responsible Microservices Architecture", 403,
                                 "Nathaniel Schutta")),
                 Map.entry("DDD",
-                        new Module5LabSolution.Workshop("Domain Driven Design Workshop", 404,
+                        new Workshop("Domain Driven Design Workshop", 404,
                                 "Rob Curry", "Kelly Morrison", "Tony Stuchel", "Steve Fordham", "Sharma Vedula")),
                 Map.entry("CloudNativeSpringBoot",
-                        new Module5LabSolution.Workshop("Google Cloud Native with Spring Boot", 405,
+                        new Workshop("Google Cloud Native with Spring Boot", 405,
                                 "Ray Tsang", "James Ward")));
     }
 

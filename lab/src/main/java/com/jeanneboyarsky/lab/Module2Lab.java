@@ -1,9 +1,7 @@
 package com.jeanneboyarsky.lab;
 
-import java.io.PrintStream;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class Module2Lab {
 

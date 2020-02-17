@@ -3,10 +3,7 @@ package com.jeanneboyarsky.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
