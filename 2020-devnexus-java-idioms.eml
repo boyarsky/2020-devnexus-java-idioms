@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/2020-devnexus-java-idioms"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/lecture/src/test/java"/>
+		<testFolder url="file://$MODULE_DIR$/lab/src/test/java"/>
+		<testFolder url="file://$MODULE_DIR$/lab-solutions/src/test/java"/>
+	</contentEntry>
+	<lib name="JUnit5.4" scope="TEST">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-jupiter-5.4.2.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-jupiter-api-5.4.2.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/apiguardian-api-1.0.0.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/opentest4j-1.1.1.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-platform-commons-1.4.2.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-jupiter-params-5.4.2.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-jupiter-engine-5.4.2.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-platform-engine-1.4.2.jar!/"/>
+	</lib>
+	<levels>
+		<level name="javaparser-core-3.15.12" value="project"/>
+	</levels>
+</component>

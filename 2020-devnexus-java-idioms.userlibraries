@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="javaparser-core-3.15.12">
+    <archive path="/Users/nyjeanne/Documents/presentations/2020-devnexus/idioms/2020-devnexus-java-idioms/lib/javaparser-core-3.15.12.jar" />
+  </library>
+</eclipse-userlibraries>
+
