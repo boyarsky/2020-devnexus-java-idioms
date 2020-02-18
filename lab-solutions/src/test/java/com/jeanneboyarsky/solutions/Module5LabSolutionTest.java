@@ -1,8 +1,11 @@
 package com.jeanneboyarsky.solutions;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
@@ -13,10 +16,14 @@ public class Module5LabSolutionTest {
 
     private Module5LabSolution target;
     private Map<String, Workshop> workshops;
+    private CodeRulesForMethods codeRules;
 
     @BeforeEach
     void setUp() {
         target = new Module5LabSolution();
+        Path folder = Paths.get("lab-solutions/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.solutions",
+                "Module5LabSolution.java");
     }
 
     @BeforeEach
@@ -68,6 +75,12 @@ public class Module5LabSolutionTest {
         String actual = target.getAllPresentersSorted(workshops);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void requirements_getAllPresentersSorted() {
+        assertTrue(codeRules.containsFlatMap("getAllPresentersSorted"),
+                "must contains flatMap()");
+    }
     // ---------------------------------------------------------
 
     @Test
@@ -78,12 +91,24 @@ public class Module5LabSolutionTest {
         assertEquals("Domain Driven Design Workshop", actual.get(504));
     }
 
+    @Test
+    void requirements_musicalRooms() {
+        assertTrue(codeRules.containsToMap("musicalRooms"),
+                "must contains toMap()");
+    }
+
     // ---------------------------------------------------------
 
     @Test
     void largestRoomNumber() {
         int actual = target.largestRoomNumber(workshops);
         assertEquals(405, actual);
+    }
+
+    @Test
+    void requirements_largestRoomNumber() {
+        assertTrue(codeRules.containsReduce("largestRoomNumber"),
+                "must contains reduce()");
     }
 
     // ---------------------------------------------------------
@@ -96,6 +121,12 @@ public class Module5LabSolutionTest {
         assertNull( actual.get(2));
     }
 
+    @Test
+    void requirements_largestRoomNumbersByFloor() {
+        assertTrue(codeRules.containsToMap("largestRoomNumbersByFloor"),
+                "must contains toMap()");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -106,6 +137,12 @@ public class Module5LabSolutionTest {
         assertNull(actual.get("2"));
     }
 
+    @Test
+    void requirements_largestRoomNumbersByFloorAsString() {
+        assertTrue(codeRules.containsGroupingBy("largestRoomNumbersByFloorAsString"),
+                "must contains groupingBy()");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -114,6 +151,12 @@ public class Module5LabSolutionTest {
         assertEquals(315, actual.get(3));
         assertEquals(405, actual.get(4));
         assertNull( actual.get(2));
+    }
+
+    @Test
+    void requirements_largestRoomNumbersByFloorCollectorVersion() {
+        assertTrue(codeRules.containsToMap("largestRoomNumbersByFloorCollectorVersion"),
+                "must contains toMap()");
     }
 
 }

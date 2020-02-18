@@ -1,9 +1,12 @@
 package com.jeanneboyarsky.solutions;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
@@ -15,10 +18,14 @@ public class Module7LabSolutionTest {
 
     private Module7LabSolution target;
     private Map<String, Workshop> workshops;
+    private CodeRulesForMethods codeRules;
 
     @BeforeEach
     void setUp() {
         target = new Module7LabSolution();
+        Path folder = Paths.get("lab-solutions/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.solutions",
+                "Module7LabSolution.java");
     }
 
     @BeforeEach
@@ -85,6 +92,14 @@ public class Module7LabSolutionTest {
         List<Integer> expected = List.of(302, 303, 304, 305);
         List<Integer> actual = target.roomNumbersSmallerThan(workshops,310);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_roomNumbersSmallerThan() {
+        assertTrue(codeRules.containsStream("roomNumbersSmallerThan"),
+                "must contain stream");
+        assertTrue(codeRules.containsMathMin("roomNumbersSmallerThan"),
+                "must contain Math.min");
     }
 
     @RepeatedTest(100)

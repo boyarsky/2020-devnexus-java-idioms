@@ -1,23 +1,33 @@
 package com.jeanneboyarsky.lab;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class Module1LabTest {
 
     private Module1Lab target;
     private ByteArrayOutputStream mock;
 
+    private CodeRulesForMethods codeRules;
+
     @BeforeEach
     void setUp() {
         mock = new ByteArrayOutputStream();
         target = new Module1Lab(new PrintStream((mock)));
+
+        Path folder = Paths.get("lab/src/test/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.rules",
+                "CodeRulesForMethodsTest.java");
     }
 
     // ---------------------------------------------------------
@@ -34,6 +44,16 @@ public class Module1LabTest {
         String expected = "";
         String actual = target.pipeSeparatedValuesOfAllNoneWhitespaceStrings(" ", "", "");
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_pipeSeparatedValuesOfAllNoneWhitespaceStrings() {
+        assertFalse(codeRules.containsStream("pipeSeparatedValuesOfAllNoneWhitespaceStrings"),
+                "cannot contain stream");
+        assertFalse(codeRules.containsLambda("pipeSeparatedValuesOfAllNoneWhitespaceStrings"),
+                "cannot contain lambda");
+        assertFalse(codeRules.containsMethodReference("pipeSeparatedValuesOfAllNoneWhitespaceStrings"),
+                "cannot contain method reference");
     }
 
     // ---------------------------------------------------------
@@ -54,6 +74,16 @@ public class Module1LabTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_threeCopiesOfFirstStringContainingNexus() {
+        assertFalse(codeRules.containsStream("threeCopiesOfFirstStringContainingNexus"),
+                "cannot contain stream");
+        assertFalse(codeRules.containsLambda("threeCopiesOfFirstStringContainingNexus"),
+                "cannot contain lambda");
+        assertFalse(codeRules.containsMethodReference("threeCopiesOfFirstStringContainingNexus"),
+                "cannot contain method reference");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -62,6 +92,16 @@ public class Module1LabTest {
         List<String> expected = List.of("Tree", "tree");
         List<String> actual = target.allCaseInsensitiveMatchesOfTree(list);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_allCaseInsensitiveMatchesOfTree() {
+        assertFalse(codeRules.containsStream("allCaseInsensitiveMatchesOfTree"),
+                "cannot contain stream");
+        assertFalse(codeRules.containsLambda("allCaseInsensitiveMatchesOfTree"),
+                "cannot contain lambda");
+        assertFalse(codeRules.containsMethodReference("allCaseInsensitiveMatchesOfTree"),
+                "cannot contain method reference");
     }
 
     // ---------------------------------------------------------
@@ -73,6 +113,18 @@ public class Module1LabTest {
         String actual = mock.toString();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void requirements_formatConstant() {
+        assertFalse(codeRules.containsLoop("formatConstant"),
+                "cannot contain loop");
+        assertFalse(codeRules.containsPrintMethod("formatConstant"),
+                "cannot contain print");
+        assertFalse(codeRules.containsNewLine("formatConstant"),
+                "cannot contain new line");
+    }
+
+    // ---------------------------------------------------------
 
     @Test
     void printBlankTicTacToeBoard() {
@@ -89,5 +141,15 @@ public class Module1LabTest {
                 + "----------\n";
         String actual = mock.toString();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_printBlankTicTacToeBoard() {
+        assertEquals(1, codeRules.countLoops("printBlankTicTacToeBoard"),
+                "must contain exactly one loop");
+        assertFalse(codeRules.containsPrintMethod("printBlankTicTacToeBoard"),
+                "cannot contain print");
+        assertFalse(codeRules.containsNewLine("printBlankTicTacToeBoard"),
+                "cannot contain new line");
     }
 }

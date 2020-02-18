@@ -1,10 +1,13 @@
 package com.jeanneboyarsky.solutions;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +21,15 @@ public class Module4LabSolutionTest {
     private Module4LabSolution target;
     private Map<String, Workshop> workshops;
     private ByteArrayOutputStream mock;
+    private CodeRulesForMethods codeRules;
 
     @BeforeEach
     void setUp() {
         mock = new ByteArrayOutputStream();
         target = new Module4LabSolution(new PrintStream((mock)));
+        Path folder = Paths.get("lab-solutions/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.solutions",
+                "Module4LabSolution.java");
     }
 
     @BeforeEach
@@ -89,10 +96,35 @@ public class Module4LabSolutionTest {
     }
 
     @Test
+    void requirements_getPresenters() {
+        assertTrue(codeRules.containsStream("getPresenters"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("getPresenters"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getPresenters"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("getPresenters"),
+                "cannot contain removeIf");
+    }
+
+    // ---------------------------------------------------------
+    @Test
     void getSessionKeysWithMultiplePresenters() {
         List<String> expected = List.of("Security", "DDD", "CloudNativeSpringBoot");
         List<String> actual = target.getSessionKeysWithMultiplePresenters(workshops);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_getSessionKeysWithMultiplePresenters() {
+        assertTrue(codeRules.containsStream("getSessionKeysWithMultiplePresenters"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("getSessionKeysWithMultiplePresenters"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getSessionKeysWithMultiplePresenters"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("getSessionKeysWithMultiplePresenters"),
+                "cannot contain removeIf");
     }
 
     // ---------------------------------------------------------
@@ -116,6 +148,18 @@ public class Module4LabSolutionTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_musicalRooms() {
+        assertTrue(codeRules.containsStream("musicalRooms"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("musicalRooms"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("musicalRooms"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("musicalRooms"),
+                "cannot contain removeIf");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -128,6 +172,18 @@ public class Module4LabSolutionTest {
     void largestRoomNumberOnThirdFloor_forNoWorkshops() {
         Optional<Integer> actual = target.largestRoomNumberOnThirdFloor(Collections.emptyMap());
         assertFalse(actual.isPresent());
+    }
+
+    @Test
+    void requirements_largestRoomNumberOnThirdFloor() {
+        assertTrue(codeRules.containsStream("largestRoomNumberOnThirdFloor"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("largestRoomNumberOnThirdFloor"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("largestRoomNumberOnThirdFloor"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("largestRoomNumberOnThirdFloor"),
+                "cannot contain removeIf");
     }
 
     // ---------------------------------------------------------
@@ -144,6 +200,18 @@ public class Module4LabSolutionTest {
         assertFalse(actual.isPresent());
     }
 
+    @Test
+    void requirements_titleOfRoomOneLowerThan() {
+        assertTrue(codeRules.containsStream("titleOfRoomOneLowerThan"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("titleOfRoomOneLowerThan"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("titleOfRoomOneLowerThan"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("titleOfRoomOneLowerThan"),
+                "cannot contain removeIf");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -158,6 +226,18 @@ public class Module4LabSolutionTest {
         String expected = "";
         String actual = target.getTitlesAsCsvWithPrefix(workshops, "X");
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_getTitlesAsCsvWithPrefix() {
+        assertTrue(codeRules.containsStream("getTitlesAsCsvWithPrefix"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("getTitlesAsCsvWithPrefix"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getTitlesAsCsvWithPrefix"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("getTitlesAsCsvWithPrefix"),
+                "cannot contain removeIf");
     }
 
     // ---------------------------------------------------------
@@ -177,6 +257,20 @@ public class Module4LabSolutionTest {
         String actual = target.musicalRoomsNewTitle(text, 999);
         assertEquals("", actual);
     }
+
+    @Test
+    void requirements_musicalRoomsNewTitle() {
+        assertTrue(codeRules.containsStream("musicalRoomsNewTitle"),
+                "must contains stream()");
+        assertFalse(codeRules.containsIf("musicalRoomsNewTitle"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("musicalRoomsNewTitle"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsRemoveIf("musicalRoomsNewTitle"),
+                "cannot contain removeIf");
+    }
+
+    // ---------------------------------------------------------
 
     @Test
     void challenge() {

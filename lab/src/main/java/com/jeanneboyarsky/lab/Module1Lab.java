@@ -28,13 +28,13 @@ public class Module1Lab {
     }
 
     public void formatConstant(String label, double constant) {
-        //TODO implement so tests pass
+        //TODO implement so tests pass (do not use loops, print, println or \n)
     }
 
     /*
      * Challenge question
      */
     public void printBlankTicTacToeBoard() {
-        //TODO implement so tests pass (do not use loops, println or \n)
+        //TODO implement so tests pass using exactly one loop at the end (do not use print, println or \n)
     }
 }

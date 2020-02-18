@@ -1,10 +1,13 @@
 package com.jeanneboyarsky.solutions;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static com.jeanneboyarsky.solutions.Module3LabSolution.*;
@@ -15,11 +18,16 @@ public class Module3LabSolutionTest {
     private Module3LabSolution target;
     private Map<String, Workshop> workshops;
     private ByteArrayOutputStream mock;
+    private CodeRulesForMethods codeRules;
 
     @BeforeEach
     void setUp() {
         mock = new ByteArrayOutputStream();
         target = new Module3LabSolution(new PrintStream((mock)));
+
+        Path folder = Paths.get("lab-solutions/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.solutions",
+                "Module3LabSolution.java");
     }
 
     @BeforeEach
@@ -108,6 +116,18 @@ public class Module3LabSolutionTest {
     }
 
     @Test
+    void requirements_getOptionalByKey() {
+        assertFalse(codeRules.containsIf("getOptionalByKey"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getOptionalByKey"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsStream("getOptionalByKey"),
+                "cannot contain stream");
+    }
+
+    // ---------------------------------------------------------
+
+    @Test
     void getPresenters_foundSingle() {
         List<String> expected = List.of("Billy Korando");
         List<String> actual = target.getPresenters(workshops, "Extending Spring Boot for Enterprise");
@@ -128,11 +148,35 @@ public class Module3LabSolutionTest {
     }
 
     @Test
+    void requirements_getPresenters() {
+        assertFalse(codeRules.containsIf("getPresenters"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getPresenters"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsStream("getPresenters"),
+                "cannot contain stream");
+    }
+
+    // ---------------------------------------------------------
+
+    @Test
     void getSessionKeysWithMultiplePresenters() {
         List<String> expected = List.of("Security", "DDD", "CloudNativeSpringBoot");
         List<String> actual = target.getSessionKeysWithMultiplePresenters(workshops);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void requirements_getSessionKeysWithMultiplePresenters() {
+        assertFalse(codeRules.containsIf("getSessionKeysWithMultiplePresenters"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("getSessionKeysWithMultiplePresenters"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsStream("getSessionKeysWithMultiplePresenters"),
+                "cannot contain stream");
+    }
+
+    // ---------------------------------------------------------
 
     @Test
     void musicalRooms() {
@@ -151,6 +195,16 @@ public class Module3LabSolutionTest {
                 "Domain Driven Design Workshop to 504\n" +
                 "Google Cloud Native with Spring Boot to 505\n";
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void requirements_musicalRooms() {
+        assertFalse(codeRules.containsIf("musicalRooms"),
+                "cannot contain if statement");
+        assertFalse(codeRules.containsLoop("musicalRooms"),
+                "cannot contain a loop");
+        assertFalse(codeRules.containsStream("musicalRooms"),
+                "cannot contain stream");
     }
 
 

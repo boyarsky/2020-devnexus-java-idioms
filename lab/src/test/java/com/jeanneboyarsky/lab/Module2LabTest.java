@@ -1,22 +1,30 @@
 package com.jeanneboyarsky.lab;
 
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Module2LabTest {
 
     private Module2Lab target;
+    private CodeRulesForMethods codeRules;
 
     @BeforeEach
     void setUp() {
         target = new Module2Lab();
+
+        Path folder = Paths.get("lab/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.lab",
+                "Module2Lab.java");
     }
 
     // ---------------------------------------------------------
@@ -33,6 +41,14 @@ public class Module2LabTest {
         String text = "Pluto";
         Optional<String> actual = target.getMiddleName(text);
         assertFalse(actual.isPresent());
+    }
+
+    @Test
+    void requirements_getMiddleName() {
+        assertTrue(codeRules.containsOptionalEmpty("getMiddleName"),
+                "must contain Optional.empty");
+        assertTrue(codeRules.containsOptionalEmpty("getMiddleName"),
+                "must contain Optional.of");
     }
 
     // ---------------------------------------------------------
@@ -89,6 +105,12 @@ public class Module2LabTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_removeNameInOneLine() {
+        assertEquals(1, codeRules.numberNonCommentedOutLines("removeNameInOneLine"),
+                "must be one line");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -125,6 +147,12 @@ public class Module2LabTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_removeNameWithPattern() {
+        assertEquals(1, codeRules.countLoops("removeNameWithPattern"),
+                "must be exactly loop");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -136,5 +164,10 @@ public class Module2LabTest {
         assertEquals("x *** x", target.removeStarsFromFrontAndBack("**** x *** x *****"));
     }
 
+    @Test
+    void requirements_removeStarsFromFrontAndBack() {
+        assertFalse(codeRules.containsLoop("removeStarsFromFrontAndBack"),
+                "must not contain loop");
+    }
 
 }

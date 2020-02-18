@@ -46,7 +46,6 @@ public class Module4Lab {
         return null;
     }
 
-
     // everyone moves one floor up (ex: 200 -> 300)
     public void musicalRooms(Map<String, Workshop> map) {
         //TODO implement with streams (no removeIf() or if statements or loops)

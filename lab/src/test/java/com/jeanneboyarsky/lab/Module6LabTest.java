@@ -1,6 +1,8 @@
 package com.jeanneboyarsky.lab;
 
 import static com.jeanneboyarsky.lab.Module6Lab.Workshop;
+
+import com.jeanneboyarsky.rules.CodeRulesForMethods;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,7 @@ public class Module6LabTest {
 
     private Module6Lab target;
     private Map<String, Workshop> workshops;
+    private CodeRulesForMethods codeRules;
 
     private Path path;
 
@@ -64,6 +67,10 @@ public class Module6LabTest {
         target = new Module6Lab();
         path = Paths.get("lab/src/main/resources/workshops.csv");
         target.writeWorkshopsSortedByRoomNumber(workshops, path);
+
+        Path folder = Paths.get("lab/src/main/java/");
+        codeRules = new CodeRulesForMethods(folder, "com.jeanneboyarsky.lab",
+                "Module6Lab.java");
     }
 
     @AfterEach
@@ -71,6 +78,14 @@ public class Module6LabTest {
         if (path != null) {
             Files.deleteIfExists(path);
         }
+    }
+
+    // ---------------------------------------------------------
+
+    @Test
+    void requirements_writeWorkshopsSortedByRoomNumber() {
+        assertFalse(codeRules.containsLoop("writeWorkshopsSortedByRoomNumber"),
+                "must not contain loop");
     }
 
     // ---------------------------------------------------------
@@ -124,12 +139,24 @@ public class Module6LabTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_musicalRooms() {
+        assertFalse(codeRules.containsLoop("musicalRooms"),
+                "must not contain loop");
+    }
+
     // ---------------------------------------------------------
     @Test
     void shortestLine() throws IOException {
         String expected = "Quarkus,314,\"The Quarkus Tutorial\",\"Edson Yanaga\"";
         Optional<String> actual = target.shortestLine(path);
         assertEquals(expected, actual.get());
+    }
+
+    @Test
+    void requirements_shortestLine() {
+        assertTrue(codeRules.containsLines("shortestLine"),
+                "must contains lines()");
     }
 
     // ---------------------------------------------------------
@@ -163,6 +190,12 @@ public class Module6LabTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void requirements_musicalRoomsStreamVersion() {
+        assertTrue(codeRules.containsLines("musicalRoomsStreamVersion"),
+                "must contains lines()");
+    }
+
     // ---------------------------------------------------------
 
     @Test
@@ -179,10 +212,18 @@ public class Module6LabTest {
         assertFalse(actual, "deleted");
     }
 
+    // ---------------------------------------------------------
+
     @Test
     void absolutePathOfLargestLabSolutionFile() throws IOException {
         Optional<String> actual = target.absolutePathOfLargestLabSolutionFile();
         assertTrue(actual.get().endsWith("java"));
+    }
+
+    @Test
+    void requirements_absolutePathOfLargestLabSolutionFile() {
+        assertTrue(codeRules.containsWalk("absolutePathOfLargestLabSolutionFile"),
+                "must contains walk()");
     }
 
     // ---------------------------------------------------------
