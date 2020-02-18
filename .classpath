@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="lecture/src/main/java"/>
 	<classpathentry kind="src" path="lecture/src/test/java"/>
 	<classpathentry kind="src" path="lab/src/main/java"/>
 	<classpathentry kind="src" path="lab/src/test/java"/>
 	<classpathentry kind="src" path="lab-solutions/src/main/java"/>
 	<classpathentry kind="src" path="lab-solutions/src/test/java"/>
-	<classpathentry kind="lib" path="lib/junit-jupiter-5.4.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaparser-core-3.15.12"/>
+	<classpathentry kind="lib" path="lib/apiguardian-api-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/javaparser-core-3.15.12.jar"/>
+	<classpathentry kind="lib" path="lib/junit-jupiter-api-5.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/junit-jupiter-engine-5.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/junit-jupiter-params-5.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/junit-platform-commons-1.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/junit-platform-engine-1.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/opentest4j-1.1.1.jar"/>
 	<classpathentry kind="output" path="out/production/2020-devnexus-java-idioms"/>
 </classpath>
